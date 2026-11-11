@@ -1,0 +1,86 @@
+
+export default function InventarioBebidas() {
+  const kpis = [
+    { titulo: 'Stock Total', valor: '125,480' },
+    { titulo: 'Stock por Nave', valor: '8 Naves' },
+    { titulo: 'Próximos a Vencer', valor: '37' },
+    { titulo: 'Alertas Activas', valor: '12' },
+  ];
+
+  return (
+    <div className='min-h-screen bg-slate-100 p-6'>
+      <div className='max-w-7xl mx-auto space-y-6'>
+        <div className='bg-blue-900 text-white rounded-3xl p-6 shadow-xl'>
+          <h1 className='text-3xl font-bold'>Inventario en Tiempo Real - Almacén de Bebidas</h1>
+          <p className='opacity-90'>React + Firebase + Firestore + Actualización en Tiempo Real</p>
+        </div>
+
+        <div className='grid md:grid-cols-4 gap-4'>
+          {kpis.map((kpi) => (
+            <div key={kpi.titulo} className='bg-white rounded-2xl p-5 shadow'>
+              <div className='text-sm text-gray-500'>{kpi.titulo}</div>
+              <div className='text-3xl font-bold text-blue-900'>{kpi.valor}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className='grid lg:grid-cols-2 gap-6'>
+          <div className='bg-white rounded-2xl p-5 shadow'>
+            <h2 className='font-bold text-xl mb-4'>Perfil Inventariador</h2>
+            <div className='space-y-3'>
+              <input className='w-full border rounded-lg p-3' placeholder='Código de Producto (autocompleta descripción)' />
+              <input className='w-full border rounded-lg p-3' placeholder='Descripción' disabled />
+              <input className='w-full border rounded-lg p-3' placeholder='Paletaje' />
+              <input className='w-full border rounded-lg p-3' placeholder='Lote Producción' />
+              <input type='date' className='w-full border rounded-lg p-3' />
+              <input type='date' className='w-full border rounded-lg p-3' />
+              <input className='w-full border rounded-lg p-3' placeholder='Nave' />
+              <input className='w-full border rounded-lg p-3' placeholder='Cantidad' />
+              <textarea className='w-full border rounded-lg p-3' placeholder='Observaciones'></textarea>
+              <div className='flex gap-2'>
+                <button className='bg-green-600 text-white px-4 py-2 rounded-xl'>Entrada</button>
+                <button className='bg-red-600 text-white px-4 py-2 rounded-xl'>Salida</button>
+                <button className='bg-amber-500 text-white px-4 py-2 rounded-xl'>Ajuste</button>
+              </div>
+            </div>
+          </div>
+
+          <div className='bg-white rounded-2xl p-5 shadow'>
+            <h2 className='font-bold text-xl mb-4'>Perfil Usuario Operativo</h2>
+            <input className='w-full border rounded-lg p-3 mb-4' placeholder='Buscar Material, Descripción, Lote o Nave' />
+            <table className='w-full text-sm'>
+              <thead>
+                <tr className='border-b'>
+                  <th>Material</th>
+                  <th>Descripción</th>
+                  <th>Nave</th>
+                  <th>Stock</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>100025</td>
+                  <td>Powerade Blue</td>
+                  <td>Nave A</td>
+                  <td>1240</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className='grid lg:grid-cols-3 gap-6'>
+          <div className='bg-white rounded-2xl p-5 shadow'>
+            <h3 className='font-bold'>Productos Próximos a Vencer</h3>
+          </div>
+          <div className='bg-white rounded-2xl p-5 shadow'>
+            <h3 className='font-bold'>Ranking Déficit</h3>
+          </div>
+          <div className='bg-white rounded-2xl p-5 shadow'>
+            <h3 className='font-bold'>Ranking Sobrestock</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
